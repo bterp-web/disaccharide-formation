@@ -1,0 +1,17 @@
+{
+  "name": "disaccharide-formation",
+  "main": "disaccharide-formation.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "maltose-element": "EberlyODL/maltose-element#master",
+    "sucrose-element": "EberlyODL/sucrose-element#master",
+    "iron-pages": "PolymerElements/iron-pages#^2.0.0",
+    "animation-shared-styles": "EberlyODL/animation-shared-styles#master"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^6.0.0-prerelease.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

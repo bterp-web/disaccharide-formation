@@ -1,0 +1,101 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../sucrose-element/sucrose-element.html">
+<link rel="import" href="../maltose-element/maltose-element.html">
+<link rel="import" href="../iron-pages/iron-pages.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="import" href="../animation-shared-styles/animation-shared-styles.html">
+
+<dom-module id="disaccharide-formation">
+  <template>
+    <style is="custom-style" include="animation-shared-styles">
+       :host {
+        display: block;
+        background: var(--animationctrl-bg-color);
+        padding: 2em;
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: .1px;
+      }
+
+      .buttons {
+        padding: 1em;
+        text-align: center;
+        justify-content: center;
+        align-items: stretch;
+        @apply --animationctrl-buttons;
+      }
+
+      .button-wrapper {
+        display: block;
+        width: 50%;
+        margin: auto auto 2em auto;
+        text-align: center;
+      }
+
+      paper-button {
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 1px;
+      }
+
+      .active {
+        color: #f5f5f5;
+        background-color: grey;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #6D6E71;
+        text-align: center;
+      }
+
+      p {
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+
+    <div class="button-wrapper">
+      <h2>To view a reation, click the buttons below.</h2>
+      <paper-button raised data-page="sucrose">sucrose</paper-button>
+      <paper-button raised data-page="maltose">maltose</paper-button>
+    </div>
+
+    <iron-pages selected="[[selected]]" attr-for-selected="id">
+      <sucrose-element id="sucrose"></sucrose-element>
+      <maltose-element id="maltose"></maltose-element>
+    </iron-pages>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'disaccharide-formation',
+      properties: {
+        selected: {
+          type: String,
+          value: ''
+        }
+      },
+      ready: function () {
+        var root = this;
+        root.$$('.button-wrapper').addEventListener('click', function (e) {
+          var target = e.target;
+          if (target) {
+            var dataPage = target.getAttribute('data-page');
+            if (dataPage === 'sucrose') {
+              root.selected = dataPage;
+              document.getElementsByTagName("paper-button")[0].className = "active style-scope disaccharide-formation-app x-scope paper-button-0";
+              document.getElementsByTagName("paper-button")[1].className = "style-scope disaccharide-formation-app x-scope paper-button-0";
+            }
+            else {
+              root.selected = dataPage;
+              document.getElementsByTagName("paper-button")[0].className = "style-scope disaccharide-formation-app x-scope paper-button-0";
+              document.getElementsByTagName("paper-button")[1].className = "active style-scope disaccharide-formation-app x-scope paper-button-0";
+            }
+          }
+        });
+      }
+    });
+  </script>
+</dom-module>
